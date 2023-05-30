@@ -3,19 +3,29 @@
         <script src="request.js"></script>
     </head>
     <body>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
-    
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required><br><br>
-    
-            <label for="mark">Mark:</label>
-            <input type="number" id="mark" name="mark" required><br><br>
+        <div id="createUserContainer">
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+        
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required><br><br>
+        
+                <label for="mark">Mark:</label>
+                <input type="number" id="mark" name="mark" required><br><br>
 
-            <p id="feedback"></p>
-    
-            <button type="button" onclick="createStudent()">Create</button>
-        </form>
+                <p id="feedback"></p>
+        
+                <button type="button" onclick="createStudent()">Create</button>
+            </form>
+        </div>
+        <div id="viewUserContainer">
+            <form>
+                <label for="id">ID:</label>
+                <input type="number" id="user_id" name="id" required><br><br>
+                <p id="result"></p>
+                <button type="button" onclick="viewStudent()">View</button>
+            </form>
+        </div>
     </body>
 </html>

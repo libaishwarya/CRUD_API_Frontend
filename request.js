@@ -12,7 +12,30 @@ function createStudent(){
 }
 
 function viewStudent(){
+    let userID = document.getElementById("user_id").value
 
+    let url = "http://127.0.0.1:8080/user/" + userID
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById("user_id").value = ""
+
+            response.json().then((jsonData)=>{
+                document.getElementById("result").innerHTML = JSON.stringify(jsonData)
+                setTimeout(function(){
+                    document.getElementById("result").innerHTML = ""
+                },10000)
+            })
+        } else {
+            console.log("Form submission failed!");
+            // Handle form submission failure
+        }
+    })
 }
 
 function updateStudent() {
@@ -39,10 +62,12 @@ function postRequest(url, body){
             document.getElementById("mark").value = ""
             document.getElementById("subject").value = ""
 
-            document.getElementById("feedback").innerHTML = "Student data created"
-            setTimeout(function(){
-                document.getElementById("feedback").innerHTML = ""
-            },2000)
+            response.json().then((jsonData)=>{
+                document.getElementById("feedback").innerHTML = "Student data created, id: " + jsonData.id
+                setTimeout(function(){
+                    document.getElementById("feedback").innerHTML = ""
+                },2000)
+            })
         } else {
             console.log("Form submission failed!");
             // Handle form submission failure
